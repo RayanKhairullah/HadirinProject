@@ -5,74 +5,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hadirin | Landing Page</title>
     <link rel="icon" href="{{ asset('images/ic_logo.png') }}" type="image/x-icon">
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
-    />
-    <link rel="stylesheet" href="https://cdn.lineicons.com/4.0/lineicons.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-    />
     @vite('resources/css/app.css')
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
-    <div
-      class="page-loading fixed top-0 bottom-0 left-0 right-0 z-[99999] flex items-center justify-center bg-primary-light-1 dark:bg-primary-dark-1 opacity-100 visible pointer-events-auto"
-      role="status"
-      aria-live="polite"
-      aria-atomic="true"
-      aria-label="Loading..."
-    >
-      <div class="grid-loader">
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-      </div>
-    </div>
-
     <main class="main relative">
       <section
         id="home"
-        class="relative bg-blue-500 overflow-hidden bg-primary text-primary-color"
+        class="relative bg-blue-500 overflow-hidden bg-primary text-primary-color py-16 md:py-24 lg:py-32" {{-- Menambahkan padding responsif --}}
       >
         <div class="container mx-auto px-4">
           <div class="-mx-5 flex flex-wrap items-center">
             <div class="w-full px-5">
               <div class="scroll-revealed mx-auto max-w-[780px] text-center">
                 <h1
-                    class="mt-16 mb-6 text-3xl font-bold leading-snug text-white sm:text-4xl sm:leading-snug lg:text-5xl lg:leading-tight"
+                    class="mt-8 mb-4 text-3xl font-bold leading-snug text-white sm:text-4xl sm:leading-snug lg:text-5xl lg:leading-tight" {{-- Mengurangi mt dan mb untuk ukuran kecil, menyesuaikan font size --}}
                   >
                 Hadirin Page by Student SMKN 1 Kota Bengkulu
                 </h1>
 
                 <p
-                  class="mx-auto mb-9 max-w-[600px] text-white sm:text-lg sm:leading-normal"
+                  class="mx-auto mb-6 max-w-[600px] text-white text-base sm:text-lg sm:leading-normal" {{-- Menyesuaikan mb dan font size --}}
                 >
                   Lorem ipsum dolor sit amet consectetur adipisicing elit.
                   Possimus qui impedit veniam, nesciunt ex sit illo?
                 </p>
 
-                <ul class="mb-10 flex flex-wrap items-center justify-center gap-4 md:gap-5">
+                <ul class="mb-10 flex flex-wrap items-center justify-center gap-3 md:gap-4 lg:gap-5"> {{-- Menyesuaikan gap antar tombol --}}
                   <li>
-                    <a href="{{ route('anggotas.index') }}" class="inline-flex items-center justify-center rounded-md bg-primary-color text-white px-5 py-3 text-base font-medium shadow-md hover:bg-primary-light-5 md:px-7 md:py-[14px]">
+                    <a href="{{ route('anggotas.index') }}" class="inline-flex items-center justify-center rounded-md bg-white text-blue-600 px-4 py-2 text-sm font-medium shadow-lg hover:bg-blue-600 hover:text-white transform hover:scale-105 transition duration-300 ease-in-out md:px-5 md:py-3 md:text-base"> {{-- Tombol diperbagus --}}
                       Tools
                     </a>
                   </li>
                   <li>
-                    <a href="{{ route('dashboard', ['category' => 'prints']) }}" class="inline-flex items-center justify-center rounded-md bg-primary-color text-white px-5 py-3 text-base font-medium shadow-md hover:bg-primary-light-5 md:px-7 md:py-[14px]">
+                    <a href="{{ route('prints.daily.form') }}" class="inline-flex items-center justify-center rounded-md bg-white text-blue-600 px-4 py-2 text-sm font-medium shadow-lg hover:bg-blue-600 hover:text-white transform hover:scale-105 transition duration-300 ease-in-out md:px-5 md:py-3 md:text-base"> {{-- Tombol diperbagus --}}
                       Prints
                     </a>
                   </li>
                   <li>
-                    <a href="#info" class="inline-flex items-center justify-center rounded-md bg-primary-color text-white px-5 py-3 text-base font-medium shadow-md hover:bg-primary-light-5 md:px-7 md:py-[14px]">
+                    <a href="#info" class="inline-flex items-center justify-center rounded-md bg-white text-blue-600 px-4 py-2 text-sm font-medium shadow-lg hover:bg-blue-600 hover:text-white transform hover:scale-105 transition duration-300 ease-in-out md:px-5 md:py-3 md:text-base"> {{-- Tombol diperbagus --}}
                       Info
                     </a>
                   </li>
@@ -83,54 +54,54 @@
         </div>
       </section>
 
-      <section id="info" class="section-area py-16"> {{-- Pastikan ID ini ada di landing page --}}
+      <section id="info" class="section-area py-12 md:py-16 lg:py-20"> {{-- Menambahkan padding responsif --}}
         <div class="container mx-auto px-4">
-          <div class="scroll-revealed text-center max-w-[550px] mx-auto mb-12">
-            <h6 class="mb-2 block text-lg font-semibold text-primary">
+          <div class="scroll-revealed text-center max-w-[550px] mx-auto mb-8 md:mb-12"> {{-- Menyesuaikan mb --}}
+            <h6 class="mb-1 block text-base font-semibold text-primary sm:text-lg"> {{-- Menyesuaikan font size --}}
               About
             </h6>
-            <h2 class="mb-6 text-3xl font-bold">About Hadirin</h2>
-            <p>
+            <h2 class="mb-4 text-2xl font-bold sm:text-3xl">About Hadirin</h2> {{-- Menyesuaikan font size --}}
+            <p class="text-sm sm:text-base"> {{-- Menyesuaikan font size --}}
               Lorem ipsum dolor sit amet consectetur adipisicing elit.
               Voluptatum dolores autem quidem odit beatae perspiciatis!
               Rem. Lorem ipsum dolor sit amet consectetuadipisicing elit.
               Voluptatum dolores autem quidem odit beatae perspiciatis!
               Rem.
             </p>
-            <div class="flex justify-center items-center mt-6 py-4 rounded-md">
-              <a href="{{ route('dashboard') }}" {{-- Arahkan ke dashboard tanpa kategori, defaultnya tools --}}
-                 class="font-semibold px-5 py-2 rounded-md bg-primary text-white hover:text-gray-900 focus:bg-primary focus:text-white active:bg-primary-light-5 active:text-primary"
+            <div class="flex justify-center items-center mt-4 py-3 rounded-md sm:mt-6 sm:py-4"> {{-- Menyesuaikan mt dan py --}}
+              <a href="{{ route('dashboard') }}"
+                 class="font-semibold px-4 py-2 rounded-md bg-primary text-white text-sm hover:text-gray-900 focus:bg-primary focus:text-white active:bg-primary-light-5 active:text-primary sm:px-5 sm:py-2 md:text-base" {{-- Menyesuaikan padding dan font size tombol --}}
                  role="button">
                  Get Started
               </a>
             </div>
           </div>
         </div>
-      </section> 
+      </section>
 
     </main>
 
     <footer class="text-black">
       <div class="w-full border-t border-solid border-alpha-dark"></div>
-      <div class="container py-8 mx-auto px-4">
-        <div class="flex flex-wrap">
-          <div class="w-full md:w-1/2">
+      <div class="container py-6 mx-auto px-4 md:py-8"> {{-- Menyesuaikan padding --}}
+        <div class="flex flex-wrap flex-col md:flex-row justify-between items-center"> {{-- Mengubah flex-direction untuk mobile dan desktop --}}
+          <div class="w-full md:w-1/2 order-2 md:order-1"> {{-- Mengatur urutan untuk mobile dan desktop --}}
             <div class="my-1">
               <div
-                class="flex flex-wrap justify-center gap-x-3 md:justify-start"
+                class="flex flex-wrap justify-center gap-x-2 md:justify-start text-xs sm:text-sm" {{-- Menyesuaikan gap dan font size --}}
               >
                 <a
-                  href="javascript:void(0)"
+                  href="#"
                   class="text-body-dark-11 hover:text-body-dark-12"
                   >Privacy Policy</a
                 >
                 <a
-                  href="javascript:void(0)"
+                  href="#"
                   class="text-body-dark-11 hover:text-body-dark-12"
                   >Legal Notice</a
                 >
                 <a
-                  href="javascript:void(0)"
+                  href="#"
                   class="text-body-dark-11 hover:text-body-dark-12"
                   >Terms of Service</a
                 >
@@ -138,9 +109,9 @@
             </div>
           </div>
 
-          <div class="w-full md:w-1/2">
+          <div class="w-full md:w-1/2 order-1 md:order-2 mb-2 md:mb-0"> {{-- Mengatur urutan dan margin untuk mobile dan desktop --}}
             <div class="my-1 flex justify-center md:justify-end">
-              <p class="text-body-dark-11">
+              <p class="text-body-dark-11 text-xs sm:text-sm"> {{-- Menyesuaikan font size --}}
                 &#169; 2025 Rayan 7k. All rights reserved</a>
               </p>
             </div>
@@ -151,17 +122,11 @@
 
     <button
       type="button"
-      class="inline-flex w-12 h-12 rounded-md items-center justify-center text-lg/none bg-primary text-primary-color hover:bg-primary-light-10 dark:hover:bg-primary-dark-10 focus:bg-primary-light-10 dark:focus:bg-primary-dark-10 fixed bottom-[117px] right-[20px] hover:-translate-y-1 opacity-100 visible z-50 is-hided"
+      class="inline-flex w-10 h-10 rounded-md items-center justify-center text-lg/none bg-primary text-primary-color hover:bg-primary-light-10 dark:hover:bg-primary-dark-10 focus:bg-primary-light-10 dark:focus:bg-primary-dark-10 fixed bottom-[80px] right-[15px] hover:-translate-y-1 opacity-100 visible z-50 is-hided md:w-12 md:h-12 md:bottom-[117px] md:right-[20px]" {{-- Menyesuaikan ukuran dan posisi tombol untuk mobile dan desktop --}}
       data-web-trigger="scroll-top"
       aria-label="Scroll to top"
     >
       <i class="lni lni-chevron-up"></i>
     </button>
-
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/mcstudios/glightbox/dist/js/glightbox.min.js"></script>
-    <script src="https://unpkg.com/scrollreveal@4.0.0/dist/scrollreveal.min.js"></script>
-
-    <script src="{{ asset('js/main.js') }}"></script>
  </body>
 </html>

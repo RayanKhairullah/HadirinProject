@@ -6,75 +6,77 @@
     <title>@yield('title', 'Aplikasi Hadirin')</title>
     <link rel="icon" href="{{ asset('images/ic_logo.png') }}" type="image/x-icon">
     @vite('resources/css/app.css')
+    {{-- Tailwind CSS CDN untuk development, pastikan sudah dihilangkan jika menggunakan @vite secara penuh --}}
+    <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-    <section id="home" class="relative overflow-hidden bg-primary text-primary-color py-16"> {{-- Tambahkan padding --}}
+    <section id="home" class="relative overflow-hidden bg-primary text-primary-color py-12 md:py-16 lg:py-20"> {{-- Padding responsif --}}
         <div class="container mx-auto px-4">
             <div class="-mx-5 flex flex-wrap items-center">
                 <div class="w-full px-5">
                     <div class="scroll-revealed mx-auto max-w-[780px] text-center">
-                        <h1 class="mt-16 mb-6 text-3xl font-bold leading-snug text-white sm:text-4xl sm:leading-snug lg:text-5xl lg:leading-tight">
+                        <h1 class="mt-8 mb-4 text-3xl font-bold leading-snug text-white sm:text-4xl sm:leading-snug lg:text-5xl lg:leading-tight"> {{-- Ukuran teks dan margin responsif --}}
                             Dashboard Page Hadirin
                         </h1>
-                        <p class="mx-auto mb-9 max-w-[600px] text-base text-white sm:text-lg sm:leading-normal">
+                        <p class="mx-auto mb-6 max-w-[600px] text-base text-white sm:text-lg sm:leading-normal"> {{-- Ukuran teks dan margin responsif --}}
                             Selamat datang! Pilih menu di bawah untuk mengakses halaman.
                         </p>
 
-                        <ul class="mb-10 flex flex-wrap items-center justify-center gap-4 md:gap-5">
+                        <ul class="mb-8 flex flex-wrap items-center justify-center gap-3 md:gap-4 lg:gap-5"> {{-- Jarak antar tombol responsif --}}
                             @if(isset($category) && $category === 'tools')
                                 <li>
-                                    <a href="{{ route('kegiatans.index') }}" class="inline-flex items-center justify-center rounded-md bg-blue-500 text-white px-5 py-3 text-base font-medium shadow-md hover:bg-blue-600 md:px-7 md:py-[14px]">
+                                    <a href="{{ route('kegiatans.index') }}" class="inline-flex items-center justify-center rounded-md bg-primary-color text-white px-4 py-2 text-sm font-medium shadow-md hover:bg-primary-light-5 md:px-5 md:py-3 md:text-base"> {{-- Ukuran tombol responsif --}}
                                         Kegiatan
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="{{ route('kehadirans.index') }}" class="inline-flex items-center justify-center rounded-md bg-blue-500 text-white px-5 py-3 text-base font-medium shadow-md hover:bg-blue-600 md:px-7 md:py-[14px]">
+                                    <a href="{{ route('kehadirans.index') }}" class="inline-flex items-center justify-center rounded-md bg-blue-500 text-white px-4 py-2 text-sm font-medium shadow-md hover:bg-blue-600 md:px-5 md:py-3 md:text-base"> {{-- Ukuran tombol responsif --}}
                                         Kehadiran
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="{{ route('anggotas.index') }}" class="inline-flex items-center justify-center rounded-md bg-blue-500 text-white px-5 py-3 text-base font-medium shadow-md hover:bg-blue-600 md:px-7 md:py-[14px]">
+                                    <a href="{{ route('anggotas.index') }}" class="inline-flex items-center justify-center rounded-md bg-blue-500 text-white px-4 py-2 text-sm font-medium shadow-md hover:bg-blue-600 md:px-5 md:py-3 md:text-base"> {{-- Ukuran tombol responsif --}}
                                         Anggota
                                     </a>
                                 </li>
                             @elseif(isset($category) && $category === 'prints')
                                 <li>
-                                    <a href="{{ route('prints.daily.form') }}" class="inline-flex items-center justify-center rounded-md bg-blue-500 text-white px-5 py-3 text-base font-medium shadow-md hover:bg-blue-600 md:px-7 md:py-[14px]">
+                                    <a href="{{ route('prints.daily.form') }}" class="inline-flex items-center justify-center rounded-md bg-blue-500 text-white px-4 py-2 text-sm font-medium shadow-md hover:bg-blue-600 md:px-5 md:py-3 md:text-base"> {{-- Ukuran tombol responsif --}}
                                         Daily
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="{{ route('prints.monthly.form') }}" class="inline-flex items-center justify-center rounded-md bg-blue-500 text-white px-5 py-3 text-base font-medium shadow-md hover:bg-blue-600 md:px-7 md::py-[14px]">
+                                    <a href="{{ route('prints.monthly.form') }}" class="inline-flex items-center justify-center rounded-md bg-blue-500 text-white px-4 py-2 text-sm font-medium shadow-md hover:bg-blue-600 md:px-5 md:py-3 md:text-base"> {{-- Ukuran tombol responsif --}}
                                         Monthly
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="{{ route('prints.annual.form') }}" class="inline-flex items-center justify-center rounded-md bg-blue-500 text-white px-5 py-3 text-base font-medium shadow-md hover:bg-blue-600 md:px-7 md::py-[14px]">
+                                    <a href="{{ route('prints.annual.form') }}" class="inline-flex items-center justify-center rounded-md bg-blue-500 text-white px-4 py-2 text-sm font-medium shadow-md hover:bg-blue-600 md:px-5 md:py-3 md:text-base"> {{-- Ukuran tombol responsif --}}
                                         Yearly
                                     </a>
                                 </li>
                             @else
                                 {{-- Default, bisa sama dengan tools atau kosong --}}
                                 <li>
-                                    <a href="{{ route('kegiatans.index') }}" class="inline-flex items-center justify-center rounded-md bg-blue-500 text-white px-5 py-3 text-base font-medium shadow-md hover:bg-blue-600 md:px-7 md:py-[14px]">
+                                    <a href="{{ route('kegiatans.index') }}" class="inline-flex items-center justify-center rounded-md bg-blue-500 text-white px-4 py-2 text-sm font-medium shadow-md hover:bg-blue-600 md:px-5 md:py-3 md:text-base"> {{-- Ukuran tombol responsif --}}
                                         Kegiatan
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="{{ route('kehadirans.index') }}" class="inline-flex items-center justify-center rounded-md bg-blue-500 text-white px-5 py-3 text-base font-medium shadow-md hover:bg-blue-600 md:px-7 md:py-[14px]">
+                                    <a href="{{ route('kehadirans.index') }}" class="inline-flex items-center justify-center rounded-md bg-blue-500 text-white px-4 py-2 text-sm font-medium shadow-md hover:bg-blue-600 md:px-5 md:py-3 md:text-base"> {{-- Ukuran tombol responsif --}}
                                         Kehadiran
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="{{ route('anggotas.index') }}" class="inline-flex items-center justify-center rounded-md bg-blue-500 text-white px-5 py-3 text-base font-medium shadow-md hover:bg-blue-600 md:px-7 md:py-[14px]">
+                                    <a href="{{ route('anggotas.index') }}" class="inline-flex items-center justify-center rounded-md bg-blue-500 text-white px-4 py-2 text-sm font-medium shadow-md hover:bg-blue-600 md:px-5 md:py-3 md:text-base"> {{-- Ukuran tombol responsif --}}
                                         Anggota
                                     </a>
                                 </li>
                             @endif
                         </ul>
                         <div class="mt-4">
-                            <a href="{{ route('landing') }}" class="inline-flex items-center justify-center rounded-md bg-gray-300 text-gray-800 px-5 py-2 text-base font-medium shadow-md hover:bg-gray-400">
+                            <a href="{{ route('landing') }}" class="inline-flex items-center justify-center rounded-md bg-gray-300 text-gray-800 px-4 py-2 text-sm font-medium shadow-md hover:bg-gray-400 md:px-5 md:py-2 md:text-base"> {{-- Ukuran tombol responsif --}}
                                 Kembali ke Landing Page
                             </a>
                         </div>
@@ -84,9 +86,11 @@
         </div>
     </section>
 
-    <div class="container mx-auto px-4 py-8">
+    <div class="container mx-auto px-4 py-6 md:py-8"> {{-- Padding responsif untuk konten utama --}}
         @if(session('success'))
-            <div class="alert alert-success">{{ session('success') }}</div>
+            <div class="alert alert-success mt-4 mb-4 text-green-700 bg-green-100 border border-green-400 rounded px-4 py-3 relative" role="alert">
+                <span class="block sm:inline">{{ session('success') }}</span>
+            </div>
         @endif
 
         @yield('content')

@@ -14,7 +14,8 @@ class PrintController extends Controller
      */
     public function showDailyPrintForm()
     {
-        return view('prints.daily', ['category' => 'prints']); // Anda bisa membuat view terpisah jika formulirnya kompleks
+        // Pastikan 'category' diteruskan ke view
+        return view('prints.daily', ['category' => 'prints']);
     }
 
     /**
@@ -42,7 +43,8 @@ class PrintController extends Controller
      */
     public function showMonthlyPrintForm()
     {
-        return view('prints.monthly');
+        // Pastikan 'category' diteruskan ke view
+        return view('prints.monthly', ['category' => 'prints']);
     }
 
     /**
@@ -76,7 +78,8 @@ class PrintController extends Controller
      */
     public function showAnnualPrintForm()
     {
-        return view('prints.annual');
+        // Pastikan 'category' diteruskan ke view
+        return view('prints.annual', ['category' => 'prints']);
     }
 
     /**
