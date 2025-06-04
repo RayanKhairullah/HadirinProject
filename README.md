@@ -21,7 +21,7 @@ git clone https://github.com/RayanKhairullah/HadirinProject.git
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
-DB_DATABASE=perpustakaan_sekolah
+DB_DATABASE=hadirindb
 DB_USERNAME=root
 DB_PASSWORD=
 ```
