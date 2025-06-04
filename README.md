@@ -14,7 +14,7 @@
 
 - Clone project.
 ```bash
-git clone https://github.com/aydinpramasta/perpustakaan-sekolah.git
+git clone https://github.com/RayanKhairullah/HadirinProject.git
 ```
 - Setup database pada komputer anda, lalu masukkan kredensial-kredensialnya ke file `.env`.
 ```
@@ -33,10 +33,6 @@ npm install
 - Generate app key.
 ```bash
 php artisan key:generate
-```
-- Link storage untuk file upload.
-```bash
-php artisan storage:link
 ```
 - Migrate database.
 ```bash
