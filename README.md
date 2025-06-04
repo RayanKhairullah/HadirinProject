@@ -2,8 +2,8 @@
 
 ## Tech Stack
 
-- **[Laravel 11](https://laravel.com/)**
-- **[Bootstrap 5.3](https://getbootstrap.com)**
+- **[Laravel 12](https://laravel.com/)**
+- **[Tailwind](https://tailwindcss.com/)**
 
 ## Prerequisites
 - PHP ^8.2
