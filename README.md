@@ -1,9 +1,9 @@
-<h1 align="center">Perpustakaan</h1>
+<h1 align="center">Hadirin</h1>
 
 ## Tech Stack
 
-- **[Laravel 11](https://laravel.com/)**
-- **[Bootstrap 5.3](https://getbootstrap.com)**
+- **[Laravel 12](https://laravel.com/)**
+- **[Tailwind](https://tailwindcss.com/)**
 
 ## Prerequisites
 - PHP ^8.2
@@ -14,14 +14,14 @@
 
 - Clone project.
 ```bash
-git clone https://github.com/aydinpramasta/perpustakaan-sekolah.git
+git clone https://github.com/RayanKhairullah/HadirinProject.git
 ```
 - Setup database pada komputer anda, lalu masukkan kredensial-kredensialnya ke file `.env`.
 ```
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
-DB_DATABASE=perpustakaan_sekolah
+DB_DATABASE=hadirindb
 DB_USERNAME=root
 DB_PASSWORD=
 ```
@@ -33,10 +33,6 @@ npm install
 - Generate app key.
 ```bash
 php artisan key:generate
-```
-- Link storage untuk file upload.
-```bash
-php artisan storage:link
 ```
 - Migrate database.
 ```bash

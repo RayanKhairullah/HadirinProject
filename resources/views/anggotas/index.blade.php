@@ -40,7 +40,8 @@
                     <td class="py-3 px-6 text-center">
                         <div class="flex item-center justify-center space-x-2"> {{-- Flexbox untuk tombol aksi --}}
                             <a href="{{ route('anggotas.edit', $anggota->id) }}" class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-1 px-2 rounded text-xs transition duration-300 ease-in-out">Edit</a>
-                            <form action="{{ route('anggotas.destroy', $anggota->id) }}" method="POST" class="inline-block"> {{-- Menggunakan inline-block --}}
+                            <a href="{{ route('anggotas.showQr', $anggota->id) }}" class="bg-purple-500 hover:bg-purple-600 text-white font-bold py-1 px-2 rounded text-xs transition duration-300 ease-in-out">QR Code</a>
+                            <form action="{{ route('anggotas.destroy', $anggota->id) }}" method="POST" class="inline-block"> 
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="bg-red-500 hover:bg-red-600 text-white font-bold py-1 px-2 rounded text-xs transition duration-300 ease-in-out" onclick="return confirm('Yakin ingin menghapus anggota ini?')">Hapus</button>

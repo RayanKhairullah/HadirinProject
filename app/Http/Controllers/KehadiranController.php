@@ -7,6 +7,10 @@ use App\Models\Anggota; // Import model Anggota
 use App\Models\Kegiatan; // Import model Kegiatan
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use SimpleSoftwareIO\QrCode\Facades\QrCode; // Import QrCode facade
+use Carbon\Carbon;
+use Illuminate\Support\Facades\File; // Tambahkan ini di atas
+use Illuminate\Support\Facades\Response;
 
 class KehadiranController extends Controller
 {
@@ -140,5 +144,89 @@ class KehadiranController extends Controller
         $kehadiran->delete();
 
         return redirect()->route('kehadirans.index')->with('success', 'Data kehadiran berhasil dihapus.');
+    }
+
+        /**
+     * Show the form for scanning QR Code for attendance.
+     */
+    public function scanQrForm()
+    {
+        $kegiatans = Kegiatan::all(); // Untuk memilih kegiatan mana yang akan dicatat kehadirannya
+        return view('kehadirans.scan_qr', compact('kegiatans'));
+    }
+
+    /**
+     * Process the QR Code scan for attendance.
+     * This will be an API endpoint called by JavaScript after scanning.
+     */
+    public function processQrScan(Request $request)
+    {
+        $request->validate([
+            'id_card' => 'required|string|exists:anggotas,id_card', // Validasi id_card dari QR
+            'kegiatan_id' => 'required|exists:kegiatans,id', // Validasi kegiatan yang dipilih
+        ]);
+
+        $anggota = Anggota::where('id_card', $request->id_card)->first();
+        $kegiatanId = $request->kegiatan_id;
+
+        if (!$anggota) {
+            return response()->json(['success' => false, 'message' => 'Anggota tidak ditemukan.'], 404);
+        }
+
+        // Periksa apakah kehadiran sudah ada untuk anggota ini pada kegiatan ini
+        $existingKehadiran = Kehadiran::where('anggota_id', $anggota->id)
+                                    ->where('kegiatan_id', $kegiatanId)
+                                    ->first();
+
+        if ($existingKehadiran) {
+            return response()->json(['success' => false, 'message' => 'Anggota ini sudah tercatat kehadirannya untuk kegiatan ini.'], 409); // Conflict
+        }
+
+        // Catat kehadiran
+        Kehadiran::create([
+            'anggota_id' => $anggota->id,
+            'kegiatan_id' => $kegiatanId,
+            'status' => 'hadir', // Status default saat scan QR adalah 'hadir'
+            'waktu_hadir' => Carbon::now(),
+            'keterangan' => 'Hadir via QR Code',
+        ]);
+
+        return response()->json(['success' => true, 'message' => $anggota->nama . ' berhasil dicatat kehadirannya!', 'anggota' => $anggota->nama, 'kegiatan' => Kegiatan::find($kegiatanId)->judul]);
+    }
+
+    /**
+     * Show the QR Code for a specific Anggota.
+     * This method will generate and display the QR Code.
+     */
+    /**
+     * Show the QR Code for a specific Anggota and provide a download link.
+     */
+    public function showAnggotaQr($id)
+    {
+        $anggota = Anggota::findOrFail($id);
+        $qrCodeSvg = QrCode::size(300)->generate($anggota->id_card); // Tetap generate SVG untuk tampilan
+
+        // Generate QR Code sebagai PNG untuk diunduh
+        // Penting: Pastikan Anda telah menginstal GD Library atau Imagick di server PHP Anda
+        $qrCodePngData = QrCode::format('png')->size(300)->generate($anggota->id_card);
+        $encodedQrCodePng = base64_encode($qrCodePngData); // Encode ke base64 untuk sematan dalam data URI
+
+        return view('anggotas.show_qr', compact('anggota', 'qrCodeSvg', 'encodedQrCodePng'));
+    }
+
+    /**
+     * Download the QR Code for a specific Anggota.
+     */
+    public function downloadAnggotaQr($id)
+    {
+        $anggota = Anggota::findOrFail($id);
+        $qrCodePng = QrCode::format('png')->size(300)->generate($anggota->id_card);
+
+        $headers = [
+            'Content-Type' => 'image/png',
+            'Content-Disposition' => 'attachment; filename="QR_Code_Anggota_' . $anggota->id_card . '.png"',
+        ];
+
+        return Response::make($qrCodePng, 200, $headers);
     }
 }
