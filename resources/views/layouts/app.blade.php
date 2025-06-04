@@ -5,10 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title', 'Aplikasi Hadirin')</title>
     <link rel="icon" href="{{ asset('images/ic_logo.png') }}" type="image/x-icon">
+    <link rel="icon" href="{{ asset('images/ic_logo.png') }}" type="image/x-icon">
     @vite('resources/css/app.css')
     {{-- Tailwind CSS CDN untuk development, pastikan sudah dihilangkan jika menggunakan @vite secara penuh --}}
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 </head>
 <body>
     <section id="home" class="relative overflow-hidden bg-primary text-primary-color py-12 md:py-16 lg:py-20"> {{-- Padding responsif --}}
@@ -87,12 +89,6 @@
     </section>
 
     <div class="container mx-auto px-4 py-6 md:py-8"> {{-- Padding responsif untuk konten utama --}}
-        @if(session('success'))
-            <div class="alert alert-success mt-4 mb-4 text-green-700 bg-green-100 border border-green-400 rounded px-4 py-3 relative" role="alert">
-                <span class="block sm:inline">{{ session('success') }}</span>
-            </div>
-        @endif
-
         @yield('content')
     </div>
 
