@@ -206,12 +206,12 @@ class KehadiranController extends Controller
         $anggota = Anggota::findOrFail($id);
         $qrCodeSvg = QrCode::size(300)->generate($anggota->id_card); // Tetap generate SVG untuk tampilan
 
-        // Generate QR Code sebagai PNG untuk diunduh
-        // Penting: Pastikan Anda telah menginstal GD Library atau Imagick di server PHP Anda
-        $qrCodePngData = QrCode::format('png')->size(300)->generate($anggota->id_card);
-        $encodedQrCodePng = base64_encode($qrCodePngData); // Encode ke base64 untuk sematan dalam data URI
+        // // Generate QR Code sebagai PNG untuk diunduh
+        // // Penting: Pastikan Anda telah menginstal GD Library atau Imagick di server PHP Anda
+        // $qrCodePngData = QrCode::format('png')->size(300)->generate($anggota->id_card);
+        // $encodedQrCodePng = base64_encode($qrCodePngData); // Encode ke base64 untuk sematan dalam data URI
 
-        return view('anggotas.show_qr', compact('anggota', 'qrCodeSvg', 'encodedQrCodePng'));
+        return view('anggotas.show_qr', compact('anggota', 'qrCodeSvg'));
     }
 
     /**

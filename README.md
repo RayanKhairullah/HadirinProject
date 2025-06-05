@@ -1,5 +1,13 @@
 <h1 align="center">Hadirin</h1>
 
+![Demo Aplikasi Hadirin](./public/images/absensi1.png)
+![Demo Aplikasi Hadirin](./public/images/absensi4.png)
+![Demo Aplikasi Hadirin](./public/images/absensi5.png)
+![Demo Aplikasi Hadirin](./public/images/absensi6.png)
+![Demo Aplikasi Hadirin](./public/images/absensi2.png)
+![Demo Aplikasi Hadirin](./public/images/absensi3.png)
+---
+
 ## Tech Stack
 
 - **[Laravel 12](https://laravel.com/)**
